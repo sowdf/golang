@@ -24,14 +24,10 @@ func (e SimpleEngine) Run(seeds ...Request) {
 		}
 		requests = append(requests, parseResult.Requests...)
 
-		for _, item := range parseResult.Items {
-			log.Printf("Got item %v\n", item)
-		}
 	}
 }
 
 func worker(r Request) (ParseResult, error) {
-	log.Printf("Fetching %s", r.Url)
 	body, e := fetcher.Fetch(r.Url)
 	if e != nil {
 		log.Printf("Fetcher : error fetching url %s:%v")

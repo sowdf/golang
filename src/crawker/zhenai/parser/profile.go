@@ -18,8 +18,8 @@ var genderRe = regexp.MustCompile(`"genderString":"([^"]+)"`)
 var marriageRe = regexp.MustCompile(`"marriageString":"([^"]+)"`)
 var educationRe = regexp.MustCompile(`"educationString":"([^"]+)"`)
 var incomeRe = regexp.MustCompile(`"月收入:([^"]+)"`)
-var carRe = regexp.MustCompile(`已买车`)
-var houseRe = regexp.MustCompile("已购房")
+var carRe = regexp.MustCompile(`"(已买车)"`)
+var houseRe = regexp.MustCompile(`"(已购房)"`)
 var xingzuoRe = regexp.MustCompile(`<div class="m-btn purple" [^>]*>(..座\([^\)]+\))</div>`)
 
 func ParseProfile(contents []byte, name string) engine.ParseResult {

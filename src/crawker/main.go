@@ -8,6 +8,8 @@ import (
 )
 
 /*
+
+	参考代码  ： https://github.com/jason-wj/go-zhenai-spider
 	乱码 安装
 	gopm get -g -v golang.org/x/text
 	自动获取  网页编码
