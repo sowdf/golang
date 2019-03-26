@@ -14,8 +14,9 @@ func ParseCity(contents []byte) engine.ParseResult {
 	//[][]byte  这里[]byte 表示的是字符串
 	for _, m := range matches {
 		name := string(m[2])
-		result.Requests = append(result.Requests, engine.Request{Url: string(m[1]), ParserFunc: func(c []byte) engine.ParseResult {
-			return ParseProfile(c, name)
+		url := string(m[1])
+		result.Requests = append(result.Requests, engine.Request{Url: url, ParserFunc: func(c []byte) engine.ParseResult {
+			return ParseProfile(c, name, url)
 		}})
 	}
 

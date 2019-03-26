@@ -1,13 +1,23 @@
 package persist
 
 import (
+	"crawker/engine"
+	"errors"
 	"golang.org/x/net/context"
 	"gopkg.in/olivere/elastic.v5"
 	"log"
 )
 
-func ItemServer() chan interface{} {
-	out := make(chan interface{})
+func ItemServer() (chan engine.Item, error) {
+	client, e := elastic.NewClient(
+		// in docker  sniff turn false
+		elastic.SetSniff(false))
+
+	if e != nil {
+		return nil, e
+	}
+
+	out := make(chan engine.Item)
 	go func() {
 		itemCount := 0
 		for {
@@ -15,31 +25,36 @@ func ItemServer() chan interface{} {
 			log.Printf("Item server: go item #%d,%v\n", itemCount, item)
 			itemCount++
 
-			_, err := save(item)
+			err := save(client, item)
 
 			if err != nil {
 				log.Printf("Save Item Error : %v,Item : %v", err, item)
 			}
 		}
 	}()
-	return out
+	return out, nil
 }
 
-func save(item interface{}) (id string, err error) {
-	client, e := elastic.NewClient(
-		// in docker  sniff turn false
-		elastic.SetSniff(false))
+func save(client *elastic.Client, item engine.Item) error {
 
-	if e != nil {
-		return "", e
+	if item.Type == "" {
+		return errors.New("must supply Type")
 	}
 
-	response, e := client.Index().Index("data_profile").Type("zhenai").BodyJson(item).Do(context.Background())
+	service := client.Index().
+		Index("data_profile").
+		Type(item.Type).
+		BodyJson(item)
+
+	if item.Id != "" {
+		service.Id(item.Id)
+	}
+	_, e = service.Do(context.Background())
 
 	if e != nil {
-		return "", e
+		return e
 	}
 
-	return response.Id, nil
+	return nil
 
 }

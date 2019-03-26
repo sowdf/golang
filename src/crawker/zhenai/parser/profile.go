@@ -21,8 +21,9 @@ var incomeRe = regexp.MustCompile(`"月收入:([^"]+)"`)
 var carRe = regexp.MustCompile(`"(已买车)"`)
 var houseRe = regexp.MustCompile(`"(已购房)"`)
 var xingzuoRe = regexp.MustCompile(`<div class="m-btn purple" [^>]*>(..座\([^\)]+\))</div>`)
+var idUrlRe = regexp.MustCompile(`http://album.zhenai.com/u/([\d]+)`)
 
-func ParseProfile(contents []byte, name string) engine.ParseResult {
+func ParseProfile(contents []byte, name string, url string) engine.ParseResult {
 	//离异 42岁 射手座(11.22-12.21) 173cm 70kg 工作地:厦门湖里区 月收入:8千-1.2万 生产/制造 大专
 	profile := model.Profile{}
 	profile.Name = name
@@ -51,8 +52,14 @@ func ParseProfile(contents []byte, name string) engine.ParseResult {
 	profile.Car = extractString(contents, carRe)
 	profile.Gender = extractString(contents, genderRe)
 	profile.House = extractString(contents, houseRe)
-
-	result := engine.ParseResult{Items: []interface{}{profile}}
+	result := engine.ParseResult{Items: []engine.Item{
+		{
+			Url:     url,
+			Type:    "zhenai",
+			Id:      extractString([]byte(url), idUrlRe),
+			Payload: profile,
+		},
+	}}
 	return result
 }
 
