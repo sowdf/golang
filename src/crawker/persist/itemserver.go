@@ -8,7 +8,7 @@ import (
 	"log"
 )
 
-func ItemServer() (chan engine.Item, error) {
+func ItemServer(index string) (chan engine.Item, error) {
 	client, e := elastic.NewClient(
 		// in docker  sniff turn false
 		elastic.SetSniff(false))
@@ -25,7 +25,7 @@ func ItemServer() (chan engine.Item, error) {
 			log.Printf("Item server: go item #%d,%v\n", itemCount, item)
 			itemCount++
 
-			err := save(client, item)
+			err := save(client, item, index)
 
 			if err != nil {
 				log.Printf("Save Item Error : %v,Item : %v", err, item)
@@ -35,21 +35,21 @@ func ItemServer() (chan engine.Item, error) {
 	return out, nil
 }
 
-func save(client *elastic.Client, item engine.Item) error {
+func save(client *elastic.Client, item engine.Item, index string) error {
 
 	if item.Type == "" {
 		return errors.New("must supply Type")
 	}
 
 	service := client.Index().
-		Index("data_profile").
+		Index(index).
 		Type(item.Type).
 		BodyJson(item)
 
 	if item.Id != "" {
 		service.Id(item.Id)
 	}
-	_, e = service.Do(context.Background())
+	_, e := service.Do(context.Background())
 
 	if e != nil {
 		return e

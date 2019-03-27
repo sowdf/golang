@@ -1,3 +1,107 @@
+GET http://localhost:9200/data_profile/zhenai/_search?q=男 已购房 已买车 Payload.Age:(<30)&pretty=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-27T085442.200.json
+
+###
+
+GET http://localhost:9200/data_profile/zhenai/_search?q=男 已购房 已买车 Payload.Age:(<30)&pretty=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-27T085401.200.json
+
+###
+
+GET http://localhost:9200/data_profile/zhenai/_search?q=男 已购房 已买车 Payload.Age:(<30)&pretty=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-27T085135.200.json
+
+###
+
+GET http://localhost:9200/data_profile/zhenai/_search?q=男 已购房 已买车 Payload.Age:(<30)&pretty=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-27T085113.200.json
+
+###
+
+GET http://localhost:9200/data_profile/zhenai/_search?q=男 已购房 已买车 Payload.Age:(<30)&pretty=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-27T085053.200.json
+
+###
+
+GET http://localhost:9200/data_profile/zhenai/_search?q=男 已购房 已买车 Payload.Age:(<30)
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-27T085031.200.json
+
+###
+
+GET http://localhost:9200/data_profile/zhenai/_search?q=男 已购房 已买车 Age:(<30)
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-27T084937.200.json
+
+###
+
+GET http://localhost:9200/data_profile/zhenai/_search?q=已购房 已买车 Age:(<30)
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-27T084911.200.json
+
+###
+
+GET http://localhost:9200/data_profile/zhenai/_search
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-27T084807.200.json
+
+###
+
+GET http://localhost:9200/dating_test/zhenai/_search
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-27T084341.200.json
+
+###
+
+GET http://localhost:9200/dating_tes/tzhenai/_search
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-27T084335.404.json
+
+###
+
+GET http://localhost:9200/dating_tes/zhenai/_search
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-27T084309.404.json
+
+###
+
+GET http://localhost:9200/dating_test/zhenai1/_search
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-27T084235.200.json
+
+###
+
 GET http://localhost:9200/data_profile/zhenai1/_search
 Accept: */*
 Cache-Control: no-cache

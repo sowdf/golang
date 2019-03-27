@@ -30,18 +30,24 @@ func TestSave(t *testing.T) {
 			House:      "已购房",
 		},
 	}
-
+	const index = "dating_test"
 	// Save expected item
-	err := save(expected)
+
+	client, err := elastic.NewClient(
+		elastic.SetSniff(false))
 
 	if err != nil {
 		panic(err)
 	}
-	client, err := elastic.NewClient(
-		elastic.SetSniff(false))
+
+	err = save(client, expected, index)
+
+	if err != nil {
+		panic(err)
+	}
 
 	result, err := client.Get().
-		Index("data_profile").
+		Index(index).
 		Type(expected.Type).
 		Id(expected.Id).Do(context.Background())
 	if err != nil {

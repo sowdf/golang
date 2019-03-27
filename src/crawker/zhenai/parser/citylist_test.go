@@ -27,7 +27,7 @@ func TestParseCityList(t *testing.T) {
 		panic(e)
 	}
 	//fmt.Printf("%s\n",contents);
-	result := ParseCityList(contents)
+	result := ParseCityList(contents, "")
 
 	const cityListSize = 470
 

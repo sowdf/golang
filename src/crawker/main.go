@@ -16,7 +16,7 @@ import (
 	gopm get -g -v golang.org/x/net/html
 */
 func main() {
-	itemChan, err := persist.ItemServer()
+	itemChan, err := persist.ItemServer("data_profile")
 	if err != nil {
 		panic(err)
 	}
