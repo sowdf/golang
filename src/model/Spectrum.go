@@ -7,9 +7,10 @@ type Spectrum struct {
 	From        string
 	FromUrl     string
 	Composition string
-	Upload      string
+	Uploader    string
 	Views       int
 	UploadDate  string
 	ImageUrls   []string
 	ClickNum    int
+	Lyrics      string
 }

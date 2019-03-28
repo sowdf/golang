@@ -26,9 +26,12 @@ func ParseCategory(contents []byte) engine.ParseResult {
 	allMatch := songUrlRe.FindAllStringSubmatch(html, -1)
 	result := engine.ParseResult{}
 	for _, m := range allMatch {
+		url := "http://www.qupu123.com" + m[1]
 		result.Requests = append(result.Requests, engine.Request{
-			Url:        "http://www.qupu123.com" + m[1],
-			ParserFunc: ParseSong,
+			Url: url,
+			ParserFunc: func(content []byte) engine.ParseResult {
+				return ParseSong(contents, url)
+			},
 		})
 	}
 

@@ -16,7 +16,9 @@ func ParseCategoryList(contents []byte) engine.ParseResult {
 	if err != nil {
 		log.Printf("选择器文档初始化失败：%s", err)
 	}
+
 	html, err := document.Find(".navigationChild").Html()
+
 	if err != nil {
 		log.Printf("选择元素失败：%s", err)
 	}
@@ -31,5 +33,6 @@ func ParseCategoryList(contents []byte) engine.ParseResult {
 			ParserFunc: ParseCategory,
 		})
 	}
+
 	return result
 }
