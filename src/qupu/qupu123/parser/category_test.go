@@ -17,7 +17,7 @@ func TestParseCategory(t *testing.T) {
 
 	//common.CreateFile("category_test_data.html",contents)
 
-	parseResult := ParseCategory(contents)
+	parseResult := ParseCategory(contents, "")
 
 	for _, item := range parseResult.Requests {
 		fmt.Printf("%v"+

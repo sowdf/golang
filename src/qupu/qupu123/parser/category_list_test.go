@@ -17,7 +17,7 @@ func TestParseCategoryList(t *testing.T) {
 
 	common.CreateFile("category_list_test_data.html", contents)
 
-	parseResult := ParseCategoryList(contents)
+	parseResult := ParseCategoryList(contents, "")
 
 	if len(parseResult.Requests) != num {
 		t.Errorf("获取到的个数是：%d，实际的个数是%d", len(parseResult.Requests), num)

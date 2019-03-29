@@ -2,7 +2,6 @@ package parser
 
 import (
 	"bytes"
-	"fmt"
 	"github.com/PuerkitoBio/goquery"
 	"log"
 	"model"
@@ -35,13 +34,12 @@ func ParseSong(contents []byte, url string) engine.ParseResult {
 		log.Printf("info get Error %s", err)
 	}
 
-	fmt.Printf("%s\n", info)
-
 	song := model.Spectrum{}
 
 	if err != nil {
 		log.Printf("Views To Int Eroor %d\n", err)
 	}
+	song.Type = "qupu123"
 	song.Composition = extractString(info, compositionRe)
 	song.Lyrics = extractString(info, lyricsRe)
 	song.Title = document.Find("h1").Text()
@@ -65,11 +63,9 @@ func ParseSong(contents []byte, url string) engine.ParseResult {
 		song.ImageUrls = append(song.ImageUrls, "http://www.qupu123.com"+m[1])
 	}
 
-	fmt.Printf("%s\n", song.ImageUrls)
-
 	result.Item = song
 
-	return engine.ParseResult{}
+	return result
 }
 
 func getViews(id string) int {

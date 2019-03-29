@@ -1,11 +1,15 @@
 package engine
 
+import "model"
+
+type ParserFunc func(contents []byte, url string) ParseResult
+
 type Request struct {
 	Url        string
-	ParserFunc func(content []byte) ParseResult
+	ParserFunc ParserFunc
 }
 
 type ParseResult struct {
 	Requests []Request
-	Item     interface{}
+	Item     model.Spectrum
 }

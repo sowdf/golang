@@ -11,7 +11,7 @@ import (
 var songUrlRe = regexp.MustCompile(`<a href="([^"]+)" [^>]*>([^<])+</a>`)
 var categoryLinkRe = regexp.MustCompile(`href="([^"]+)"`)
 
-func ParseCategory(contents []byte) engine.ParseResult {
+func ParseCategory(contents []byte, _ string) engine.ParseResult {
 	newReader := bytes.NewReader(contents)
 	document, err := goquery.NewDocumentFromReader(newReader)
 	if err != nil {
@@ -28,10 +28,8 @@ func ParseCategory(contents []byte) engine.ParseResult {
 	for _, m := range allMatch {
 		url := "http://www.qupu123.com" + m[1]
 		result.Requests = append(result.Requests, engine.Request{
-			Url: url,
-			ParserFunc: func(content []byte) engine.ParseResult {
-				return ParseSong(contents, url)
-			},
+			Url:        url,
+			ParserFunc: ProxyParseSong(),
 		})
 	}
 
@@ -52,4 +50,10 @@ func ParseCategory(contents []byte) engine.ParseResult {
 
 	return result
 
+}
+
+func ProxyParseSong() engine.ParserFunc {
+	return func(contents []byte, url string) engine.ParseResult {
+		return ParseSong(contents, url)
+	}
 }

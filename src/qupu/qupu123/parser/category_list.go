@@ -10,7 +10,7 @@ import (
 
 var categoryUrlRe = regexp.MustCompile(`<a href="([^"]+)">([^<]+)</a>`)
 
-func ParseCategoryList(contents []byte) engine.ParseResult {
+func ParseCategoryList(contents []byte, _ string) engine.ParseResult {
 	newReader := bytes.NewReader(contents)
 	document, err := goquery.NewDocumentFromReader(newReader)
 	if err != nil {
