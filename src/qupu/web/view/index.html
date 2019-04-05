@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="m_search">
+
+</div>
+
+<div class="m_result">
+    <h2>共为你找到 {{.Hits}}个</h2>，显示从 {{.Start}} 起， 一个{{len .Songs}}
+    <ul>
+        {{range .Songs}}
+        <li>
+            <h1>{{ .Title }}</h1>
+        </li>
+        {{else}}
+            当前无内容
+        {{end}}
+    </ul>
+</div>
+
+</body>
+</html>

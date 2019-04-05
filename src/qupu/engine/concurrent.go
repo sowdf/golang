@@ -1,7 +1,6 @@
 package engine
 
 import (
-	"fmt"
 	"model"
 )
 
@@ -34,16 +33,16 @@ func (e *ConcurrentEngine) Run(seeds ...Request) {
 	for _, r := range seeds {
 		e.Scheduler.Submit(r)
 	}
-
+	limitCount := 0
 	for {
 		result := <-out
-		fmt.Printf("got item %+v", result.Item)
-		/*go func() {
+		limitCount++
+		go func() {
 			//丢给外面去做 去储存什么的
-
-
-			//e.ItemChan <- result.Item
-		}()*/
+			if result.Item.Id != "" {
+				e.ItemChan <- result.Item
+			}
+		}()
 		for _, request := range result.Requests {
 			if isDuplicate(request.Url) {
 				continue

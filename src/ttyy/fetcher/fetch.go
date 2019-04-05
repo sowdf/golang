@@ -26,11 +26,9 @@ func Fetch(url string) (contents []byte, err error) {
 
 	//设置请求头
 	request.Header.Add("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.28 Safari/537.36")
-	request.Header.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3")
-	request.Header.Add("Accept-Language", "zh-CN,zh;q=0.9,en;q=0.8")
-	request.Header.Add("Cookie", "__cfduid=def3c13d276a10848b8f1258e083d36e21548585278; Hm_lvt_dca7dc99d8ac55393ef7fbc057d85ffb=1548585281,1548586001; bdshare_firstime=1549453858855; PHPSESSID=uitopl4vcj2fi34ek6pci6ivr3; Hm_lvt_40108d7e4cc326e04eecdd70da888247=1553696084,1553696118,1553696841; Murl=-m0XB7fGVrb8WLe%3DkTv8V3XF%2F7v2NypDU0yRAYh0P%2Ft1WLa--tqjr93M%2F7ELNRS4B; damon_token_2019=160105452; Hm_lpvt_40108d7e4cc326e04eecdd70da888247=1553736667")
-	request.Header.Add("Host", "www.qupu123.com")
-
+	request.Header.Add("Cookie", "timestamp=02030357048468189705; _ga=GA1.2.805527182.1553010937; ciu_key=ac97d6f4-be4a-4bdd-ba8a-ec69cbfa3751$112.5.201.212; ticket=afe2cd4f-f7c6-424a-bf3e-94dd17c58a10; inviteriid=1064280; JSESSIONID=bjsqrcaausktdzd3pu9mxlk6")
+	request.Header.Add("Origin", "https://m.tititoy2688.com")
+	request.Header.Add("Host", "m.tititoy2688.com")
 	//请求
 
 	response, err := client.Do(request)
@@ -51,6 +49,7 @@ func Fetch(url string) (contents []byte, err error) {
 	return ioutil.ReadAll(newReader)
 
 }
+
 func determineEncoding(r *bufio.Reader) encoding.Encoding {
 	bytes, e := r.Peek(1024)
 	if e != nil {

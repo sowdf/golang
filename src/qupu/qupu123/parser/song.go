@@ -12,7 +12,7 @@ import (
 )
 
 var compositionRe = regexp.MustCompile(`<span>作曲：</span><a [^>]*>([^<]+)</a>`)
-var idRe = regexp.MustCompile(`http://www.qupu123.com/tongsu/sanzi/p([\d]+).html`)
+var idRe = regexp.MustCompile(`http://www.qupu123.com/[^p]*/p([\d]+).html`)
 var fromRe = regexp.MustCompile(`<span>来源：</span>([^<]+)<span>`)
 var lyricsRe = regexp.MustCompile(`<span>作词：</span><a [^>]*>([^<]+)</a>`)
 var dateRe = regexp.MustCompile(`<span>日期：</span>([\d]+-[\d]+-[\d]+)`)

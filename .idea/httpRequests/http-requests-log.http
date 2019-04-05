@@ -1,3 +1,115 @@
+GET http://localhost:9200/qupu/qupu123/_search?q=女儿情&pretty=&size=100
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-04-05T120329.200.json
+
+###
+
+GET http://localhost:9200/qupu/qupu123/_search?q=女儿墙&pretty=&size=100
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-04-05T120301.200.json
+
+###
+
+GET http://localhost:9200/qupu/qupu123/_search?q=彩云追月&pretty=&size=100
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-04-05T100001.200.json
+
+###
+
+GET http://localhost:9200/qupu/qupu123/_search?q=彩云追月&pretty=&size=100
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-04-05T084305.200.json
+
+###
+
+GET http://localhost:9200/qupu/qupu123/_search?q=女儿情&pretty=&size=100
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-04-05T083908.200.json
+
+###
+
+GET http://localhost:9200/qupu/qupu123/_search?q=女儿情&pretty=&size=100
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-04-05T083202.200.json
+
+###
+
+GET http://localhost:9200/qupu/qupu123/_search?q=女儿情&pretty=&size=100
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-29T041232.200.json
+
+###
+
+GET http://localhost:9200/qupu/qupu123/_search?q=女儿情&pretty=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-29T041148.200.json
+
+###
+
+GET http://localhost:9200/qupu/qupu123/_search?q=中国长笛网&pretty=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-29T041057.200.json
+
+###
+
+GET http://localhost:9200/qupu/qupu123/_search?q=大海&pretty=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-29T040758.200.json
+
+###
+
+GET http://localhost:9200/qupu/qupu123/_search=大海?q=男 已购房 已买车 Payload.Age:(<30)&pretty=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-29T040739.400.json
+
+###
+
+GET http://localhost:9200/qupu/qupu123/_search?q=男 已购房 已买车 Payload.Age:(<30)&pretty=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-29T040724.200.json
+
+###
+
+GET http://localhost:9200/qupu/qupu123/_search?q=男 已购房 已买车 Payload.Age:(<30)&pretty=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-29T023208.200.json
+
+###
+
+GET http://localhost:9200/data_profile/zhenai/_search?q=男 已购房 已买车 Payload.Age:(<30)&pretty=
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-03-29T023150.200.json
+
+###
+
 GET http://localhost:9200/data_profile/zhenai/_search?q=男 已购房 已买车 Payload.Age:(<30)&pretty=
 Accept: */*
 Cache-Control: no-cache
