@@ -2,7 +2,7 @@ package controller
 
 import (
 	"context"
-	"fmt"
+	"encoding/json"
 	"gopkg.in/olivere/elastic.v5"
 	model2 "model"
 	"net/http"
@@ -42,8 +42,14 @@ func (s SearchResultHandler) ServeHTTP(res http.ResponseWriter, req *http.Reques
 	if err != nil {
 		http.Error(res, err.Error(), http.StatusBadRequest)
 	}
+	dataStr, err := json.Marshal(data)
+	if err != nil {
+		http.Error(res, err.Error(), http.StatusBadRequest)
+	}
 
-	err = s.view.Render(res, data)
+	_, err = res.Write([]byte(dataStr))
+
+	//err = s.view.Render(res, data)
 
 	if err != nil {
 		http.Error(res, err.Error(), http.StatusBadRequest)
@@ -65,7 +71,6 @@ func (s SearchResultHandler) getSearchResult(q string, from int) (model.SearchRe
 	data.Start = from
 	data.Hits = int(resp.TotalHits())
 	data.Songs = resp.Each(reflect.TypeOf(model2.Spectrum{}))
-	fmt.Printf("%v\n", data.Songs)
 	return data, nil
 
 }
