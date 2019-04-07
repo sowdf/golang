@@ -10,25 +10,19 @@ import (
 )
 
 func TestSave(t *testing.T) {
-	expected := engine.Item{
-		Url:  "http://album.zhenai.com/u/1847904784",
-		Type: "zhenai",
-		Id:   "1847904784",
-		Payload: model.Profile{
-			Name:       "征婚",
-			Gender:     "男士",
-			Age:        47,
-			Height:     175,
-			Weight:     77,
-			Income:     "2-5万",
-			Marriage:   "离异",
-			Education:  "大学本科",
-			Occupation: "不能获取",
-			Hokou:      "福建厦门",
-			Xingzuo:    "射手座(11.22-12.21)",
-			Car:        "已买车",
-			House:      "已购房",
-		},
+	expected := model.Spectrum{
+		Id:          "336145",
+		Type:        "qupu123",
+		Title:       "​30女儿情（双谱）",
+		From:        "新编中国声乐作品第15集  ",
+		FromUrl:     "http://www.qupu123.com/tongsu/sanzi/p336145.html",
+		Composition: "许镜清",
+		Uploader:    "瓦莲金娜AA  ",
+		Views:       3561,
+		UploadDate:  "2018-05-21",
+		ImageUrls:   []string{"http://www.qupu123.com/Public/Uploads/2018/05/21/5b02162abcb9b.jpg", "http://www.qupu123.com/Public/Uploads/2018/05/21/5b0216332b8d1.jpg"},
+		ClickNum:    0,
+		Lyrics:      "杨洁",
 	}
 	const index = "dating_test"
 	// Save expected item
@@ -40,7 +34,7 @@ func TestSave(t *testing.T) {
 		panic(err)
 	}
 
-	err = save(client, expected, index)
+	err = Save(client, expected, index)
 
 	if err != nil {
 		panic(err)

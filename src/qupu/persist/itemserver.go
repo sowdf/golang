@@ -25,7 +25,7 @@ func ItemServer(index string) (chan model.Spectrum, error) {
 			log.Printf("Item server: go item #%d,%v\n", itemCount, item)
 			itemCount++
 
-			err := save(client, item, index)
+			err := Save(client, item, index)
 
 			if err != nil {
 				log.Printf("Save Item Error : %v,Item : %v", err, item)
@@ -35,7 +35,7 @@ func ItemServer(index string) (chan model.Spectrum, error) {
 	return out, nil
 }
 
-func save(client *elastic.Client, item model.Spectrum, index string) error {
+func Save(client *elastic.Client, item model.Spectrum, index string) error {
 
 	if item.Type == "" {
 		return errors.New("must supply Type")
