@@ -1,3 +1,11 @@
+GET http://localhost:9200/test1/qupu/_search?pretty=&size=100&q=男 已购房 已买车
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-04-08T101355.404.json
+
+###
+
 GET http://localhost:9200/qupu/qupu123/_search?q=女儿情&pretty=&size=100
 Accept: */*
 Cache-Control: no-cache

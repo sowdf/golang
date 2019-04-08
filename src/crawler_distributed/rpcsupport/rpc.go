@@ -9,23 +9,26 @@ import (
 
 func ServiceRpc(host string, server interface{}) error {
 	//注册、
-	rpc.Register(server)
+	err := rpc.Register(server)
+
+	if err != nil {
+		return err
+	}
 
 	//打开tcp
-
 	listener, err := net.Listen("tcp", host)
 	if err != nil {
 		return err
 	}
 	for {
 		conn, err := listener.Accept()
-		if err != err {
+		if err != nil {
 			log.Printf("conn fail : %s", err)
 			continue
 		}
 		go jsonrpc.ServeConn(conn)
 	}
-	return err
+	return nil
 }
 
 func NewClient(host string) (*rpc.Client, error) {
