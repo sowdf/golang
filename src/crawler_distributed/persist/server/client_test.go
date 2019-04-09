@@ -1,16 +1,18 @@
 package main
 
 import (
+	"crawler_distributed/config"
 	"crawler_distributed/rpcsupport"
 	"model"
 	"testing"
+	"time"
 )
 
 func TestSaveItem(t *testing.T) {
 	// start server
 	go serviceRpc(":1234", "test1")
 
-	//time.Sleep(time.Second)
+	time.Sleep(time.Second)
 	// start client
 
 	client, err := rpcsupport.NewClient(":1234")
@@ -36,7 +38,7 @@ func TestSaveItem(t *testing.T) {
 
 	var result string
 
-	err = client.Call("ItemSaveServerService.Save", item, &result)
+	err = client.Call(config.ItemSaverRpc, item, &result)
 	if err != nil || result != "ok" {
 		t.Errorf("result %s : %v", result, err)
 	}
