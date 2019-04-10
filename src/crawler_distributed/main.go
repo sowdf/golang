@@ -20,8 +20,8 @@ func main() {
 		Scheduler:   &scheduler.QueuedScheduler{},
 	}
 	e.Run(engine.Request{
-		Url:        "http://www.qupu123.com/",
-		ParserFunc: parser.ParseCategoryList,
+		Url:    "http://www.qupu123.com/",
+		Parser: engine.NewFuncParser(parser.ParseCategoryList, "ParseCategoryList"),
 	})
 
 }

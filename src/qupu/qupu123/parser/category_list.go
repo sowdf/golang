@@ -29,8 +29,8 @@ func ParseCategoryList(contents []byte, _ string) engine.ParseResult {
 	for _, match := range allMatch {
 		url := "http://www.qupu123.com" + match[1]
 		result.Requests = append(result.Requests, engine.Request{
-			Url:        url,
-			ParserFunc: ParseCategory,
+			Url:    url,
+			Parser: engine.NewFuncParser(ParseCategory, "ParserFunc"),
 		})
 	}
 

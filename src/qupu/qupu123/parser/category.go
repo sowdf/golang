@@ -28,8 +28,8 @@ func ParseCategory(contents []byte, _ string) engine.ParseResult {
 	for _, m := range allMatch {
 		url := "http://www.qupu123.com" + m[1]
 		result.Requests = append(result.Requests, engine.Request{
-			Url:        url,
-			ParserFunc: ProxyParseSong(),
+			Url:    url,
+			Parser: engine.NewFuncParser(ParseSong, "ParseSong"),
 		})
 	}
 
@@ -43,17 +43,11 @@ func ParseCategory(contents []byte, _ string) engine.ParseResult {
 
 	for _, m := range categoryLinkMatch {
 		result.Requests = append(result.Requests, engine.Request{
-			Url:        "http://www.qupu123.com" + m[1],
-			ParserFunc: ParseCategory,
+			Url:    "http://www.qupu123.com" + m[1],
+			Parser: engine.NewFuncParser(ParseCategory, "ParseCategory"),
 		})
 	}
 
 	return result
 
-}
-
-func ProxyParseSong() engine.ParserFunc {
-	return func(contents []byte, url string) engine.ParseResult {
-		return ParseSong(contents, url)
-	}
 }
